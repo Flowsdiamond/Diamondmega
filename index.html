@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/boxicons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    :root {
+      --background-color: #000;
+      --text-color: #fff;
+      --bubble-color: rgba(255, 255, 255, 0.5);
+      --server-name-color: #fff;
+      --icon-color: #fff;
+    }
+
+    .light-theme {
+      --background-color: #fff;
+      --text-color: #000;
+      --bubble-color: rgba(0, 0, 0, 0.5);
+      --server-name-color: #000;
+      --icon-color: #000;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .audio-player-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: var(--background-color);
+      border: 2px solid var(--text-color);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      color: var(--text-color);
+    }
+
+    .audio-player-container img {
+      width: 60px;
+      height: 60px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .audio-details {
+      flex-grow: 1;
+    }
+
+    .audio-details h4 {
+      margin: 0;
+      font-size: 16px;
+      color: var(--text-color);
+    }
+
+    .audio-details p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--text-color);
+    }
+
+    .custom-audio {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .switcher-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .theme-switcher,
+    .music-switcher {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 32px;
+      color: var(--text-color);
+      transition: color 0.3s;
+    }
+
+    .hero__link i {
+      font-size: 28px;
+      color: var(--icon-color);
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .hero__link i:hover {
+      transform: translateY(-5px) scale(1.05);
+      color: #4facfe;
+    }
+
+    .server__link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--server-name-color);
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .server__link:hover {
+      transform: translateY(-5px) scale(1.05);
+      color: #4facfe;
+    }
+
+    .hover-animate {
+      display: inline-block;
+      transition: transform 0.5s ease, color 0.5s ease;
+    }
+
+    .hover-animate:hover {
+      transform: translateY(-5px) scale(1.05);
+      color: #4facfe;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background-color: var(--bubble-color);
+      pointer-events: none;
+      animation: bubbleAnimation 3s ease-out forwards;
+    }
+
+    @keyframes bubbleAnimation {
+      to {
+        transform: translateY(-100px) scale(0);
+        opacity: 0;
+      }
+    }
+
+    .visitor-counter {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      font-size: 18px;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .visitor-counter i {
+      font-size: 24px;
+      color: var(--text-color);
+    }
+
+    @media (max-width: 768px) {
+      .audio-player-container {
+        max-width: 300px;
+        bottom: 10px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header class="header">
+    <span class="logo hover-animate">Diamond dev</span>
+  </header>
+
+  <div class="hero">
+    <div class="container hero__container">
+      <div class="hero__about">
+        <h1 class="hero__title hover-animate">Hi, I am Diamond</h1>
+        <h2 class="hero__subtitle hover-animate">developer of Discord/Telegram bots in Python, as well as active study of nodejs</h2>
+        <p class="hero__description hover-animate">To contact us with any questions, write to Discord or Telegram</p>
+
+        <div class="hero__links">
+          <a class="hero__link" href="https://discord.gg/jQZZ5NXxnh" target="_blank">
+            <i class="bx bxl-discord"></i>
+          </a>
+          <a class="hero__link" href="https://t.me/fbiprivet" target="_blank">
+            <i class="bx bxl-telegram"></i>
+          </a>
+          <a class="hero__link" href="https://github.com/Flowsdiamond" target="_blank">
+            <i class="bx bxl-github"></i>
+          </a>
+        </div>
+
+        <div class="discord-servers">
+          <h3 class="servers__title hover-animate">Developer:</h3>
+          <a class="server__link" href="https://discord.gg/legendar" target="_blank">
+            <img class="server__avatar" src="https://cdn.discordapp.com/icons/1157690193457991682/a_6565b2777c78d4c4231d635cb0273c2b.gif" alt="Название сервера">
+            <span class="server__name">Legendar Shop</span>
+          </a>
+          <a class="server__link" href="https://discord.gg/W8yBCbX9" target="_blank">
+            <img class="server__avatar" src="./images/photo_2024-12-13_11-44-22 (2).jpg" alt="Название второго сервера">
+            <span class="server__name">Ultra DM</span>
+          </a>
+          <a class="server__link" href="https://discord.gg/jQZZ5NXxnh" target="_blank">
+            <img class="server__avatar" src="./images/photo_2024-12-13_11-44-22.jpg" alt="Название третьего сервера">
+            <span class="server__name">Shine Shop</span>
+          </a>
+        <a class="server__link" href="https://discord.gg/fr4TDHDXM7" target="_blank">
+          <img class="server__avatar" src="./images/ezgif-6-c1242ccbe0.gif" alt="Название третьего сервера">
+          <span class="server__name">Flow Mega</span>
+        </a>
+        </div>
+
+      </div>
+
+      <div class="hero__box">
+        <img class="hero__box-img" src="images/11.png" alt="">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="switcher-container">
+    <button class="theme-switcher" id="themeSwitcher">
+      <i class="bx bx-sun"></i>
+    </button>
+    <button class="music-switcher" id="musicSwitcher">
+      <i class="bx bx-volume-full"></i>
+    </button>
+  </div>
+
+  <div class="audio-player-container">
+    <img src="images/e65e9c564af2889873bc01453b8557e3.jpg" alt="Track Image">
+    <div class="audio-details">
+      <h4>Bring It Fine</h4>
+      <p></p>
+      <audio id="backgroundMusic" class="custom-audio" controls="" autoplay="" loop="">
+        <source src="https://dl.dropboxusercontent.com/scl/fi/q1y3zlipcsypvvx5nz0y6/Bring-It-Fine-RAVE-REMIX-Slowed-Bass-Boosted.mp3?rlkey=uli9op1l95wimb5y08mbz4ew0&st=0pj9xiov&dl=0" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+
+
+  <script>
+    const themeSwitcher = document.getElementById("themeSwitcher");
+    const musicSwitcher = document.getElementById("musicSwitcher");
+    const backgroundMusic = document.getElementById("backgroundMusic");
+    const body = document.body;
+
+    themeSwitcher.addEventListener("click", () => {
+      body.classList.toggle("light-theme");
+      const icon = themeSwitcher.querySelector('i');
+      if (body.classList.contains("light-theme")) {
+        icon.classList.replace('bx-sun', 'bx-moon');
+      } else {
+        icon.classList.replace('bx-moon', 'bx-sun');
+      }
+    });
+
+    musicSwitcher.addEventListener("click", () => {
+      const icon = musicSwitcher.querySelector('i');
+      if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        icon.classList.replace('bx-volume-mute', 'bx-volume-full');
+      } else {
+        backgroundMusic.pause();
+        icon.classList.replace('bx-volume-full', 'bx-volume-mute');
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      updateVisitorCount();
+    });
+
+    function updateVisitorCount() {
+      const visitorCountElement = document.getElementById("visitorCount");
+      let count = parseInt(visitorCountElement.textContent, 10);
+      visitorCountElement.textContent = count + 1;
+    }
+
+    document.addEventListener("mousemove", function (e) {
+      createBubble(e.pageX, e.pageY);
+    });
+
+    function createBubble(x, y) {
+      const bubble = document.createElement("div");
+      const size = Math.random() * 20 + 10;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.classList.add("bubble");
+
+      bubble.style.left = `${x}px`;
+      bubble.style.top = `${y}px`;
+
+      document.body.appendChild(bubble);
+
+      setTimeout(() => {
+        bubble.remove();
+      }, 3000);
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+</body></html>
